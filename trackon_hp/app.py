@@ -44,7 +44,7 @@ def delete(sno):
     task_table=tracker.query.filter_by(sno=sno).first()
     db.session.delete(task_table)
     db.session.commit()
-    return redirect("/")    
+    return redirect("/")   
 
 
 

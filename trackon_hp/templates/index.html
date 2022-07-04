@@ -79,8 +79,11 @@
                     <th scope="row">{{loop.index}}</td>
                     <td>{{inpt.tracker_name}}</td>
                     <td>{{inpt.task_value_type}}</td>
-                    <td> <a href="/delete/{{inpt.sno}}" type="button"
-                            class="btn btn-outline-dark btn-sm mx-1">Delete</button></td>
+                    <td><a href="/delete/{{inpt.sno}}" type="button"
+                        class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                        <a href="/view/{{inpt.sno}}" type="button"
+                        class="btn btn-outline-dark btn-sm mx-1">View</button>
+                        </td>
                 </tr>
                 {% endfor %}
 
@@ -101,9 +104,9 @@
                     <td>{{inpt.tracker_name}}</td>
                     <td>{{inpt.task_value_type}}</td>
                     <td> <a href="/delete/{{inpt.sno}}" type="button"
-                            class="btn btn-outline-dark btn-sm mx-1">Delete</button>
-                            <a href="/view/{{inpt.sno}}" type="button"
-                            class="btn btn-outline-dark btn-sm mx-1">View</button></td>
+                        class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                        <a href="/view/{{inpt.sno}}" type="button"
+                        class="btn btn-outline-dark btn-sm mx-1">View</button></td>
                 </tr>
                 {% endfor %}
             </div>
@@ -137,8 +140,6 @@
     </table>
     {% endif %}
 
-    
-      
 
 
 

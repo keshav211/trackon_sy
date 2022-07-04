@@ -37,60 +37,108 @@
 
 
 
-    <div class="container">
-        <form action="/" method="POST">
-        <div class="form">
-            <label for="inputState">Select Your Tracker...</label><br><br>
-            <select id="inputState" class="form-control" name="track_variable">
-                <option selected></option>
-                <option>Sleep Tracker</option>
-                <option>Food Tracker</option>
-                <option>Smile Tracker</option>
-                <option>Water Tracker</option>
-                <option>Walk Tracker</option>
-                <option>Money Spent Tracker</option>
-            </select><br><br>
-            <label for="inputState" class="form-label">Type of variable</label>
-            <select id="inputState" class="form-select" name="track_type">
-            <option selected></option>
-            <option>Boolean</option>
-            <option>Number</option>
-            <option>value</option>
-        </select>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-    </div>
-
-
-
-
     {% if outpage|length == 0 %}
 
-    <div class="alert alert-dark" role="alert">
-        No Task details found. Add your first task now!
+    <div class="container">
+        <form action="/" method="POST">
+            <div class="form">
+                <label for="inputState">Select Your Tracker...</label><br><br>
+                <select id="inputState" class="form-control" name="track_variable">
+                    <option selected></option>
+                    <option>Sleep Tracker</option>
+                    <option>Food Tracker</option>
+                    <option>Smile Tracker</option>
+                    <option>Water Tracker</option>
+                    <option>Walk Tracker</option>
+                    <option>Money Spent Tracker</option>
+                </select><br><br>
+                <label for="inputState" class="form-label">Type of variable</label>
+                <select id="inputState" class="form-select" name="track_type">
+                    <option selected></option>
+                    <option>Boolean</option>
+                    <option>Number</option>
+                    <option>value</option>
+                </select><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
     </div>
     {% else %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Sl.no</th>
-                <th scope="col">Tracker name</th>
-                <th scope="col">Variable Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for inpt in outpage %}
-            <tr>
-                <th scope="row">{{loop.index}}</td>
-                <td>{{inpt.tracker_name}}</td>
-                <td>{{inpt.task_value_type}}</td>
-            </tr>
-            {% endfor %}
+        {% if outpage|length == 6 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sl.no</th>
+                    <th scope="col">Tracker name</th>
+                    <th scope="col">Variable Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inpt in outpage %}
+                <tr>
+                    <th scope="row">{{loop.index}}</td>
+                    <td>{{inpt.tracker_name}}</td>
+                    <td>{{inpt.task_value_type}}</td>
+                    <td> <a href="/delete/{{inpt.sno}}" type="button"
+                            class="btn btn-outline-dark btn-sm mx-1">Delete</button></td>
+                </tr>
+                {% endfor %}
+
+        {% else %}
+        <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sl.no</th>
+                    <th scope="col">Tracker name</th>
+                    <th scope="col">Variable Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inpt in outpage %}
+                <tr>
+                    <th scope="row">{{loop.index}}</td>
+                    <td>{{inpt.tracker_name}}</td>
+                    <td>{{inpt.task_value_type}}</td>
+                    <td> <a href="/delete/{{inpt.sno}}" type="button"
+                            class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                            <a href="/view/{{inpt.sno}}" type="button"
+                            class="btn btn-outline-dark btn-sm mx-1">View</button></td>
+                </tr>
+                {% endfor %}
+            </div>
+                <div class="container">
+                    <form action="/" method="POST">
+                        <div class="form">
+                            <label for="inputState">Select Your Tracker...</label><br>
+                            <select id="inputState" class="form-control" name="track_variable">
+                                <option selected></option>
+                                <option>Sleep Tracker</option>
+                                <option>Food Tracker</option>
+                                <option>Smile Tracker</option>
+                                <option>Water Tracker</option>
+                                <option>Walk Tracker</option>
+                                <option>Money Spent Tracker</option>
+                            </select><br>
+                            <label for="inputState" class="form-label">Type of variable</label>
+                            <select id="inputState" class="form-select" name="track_type">
+                                <option selected></option>
+                                <option>Boolean</option>
+                                <option>Number</option>
+                                <option>value</option>
+                            </select><br>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+        {% endif %}
         </tbody>
     </table>
     {% endif %}
 
+    
+      
 
 
 
@@ -102,4 +150,5 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 </footer>
+
 </html>

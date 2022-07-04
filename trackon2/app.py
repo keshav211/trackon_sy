@@ -39,6 +39,13 @@ def hello_world():
     outputpage=tracker.query.all()
     return render_template('index.html',outpage=outputpage)
 
+@app.route("/delete/<int:sno>")
+def delete(sno):
+    task_table=tracker.query.filter_by(sno=sno).first()
+    db.session.delete(task_table)
+    db.session.commit()
+    return redirect("/")    
+
 
 
 if __name__ =="__main__":
